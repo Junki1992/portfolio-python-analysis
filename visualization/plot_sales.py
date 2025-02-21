@@ -23,3 +23,21 @@ plt.ylabel("売上金額")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+# 商品ごとの売上金額を集計
+sales_by_product = df.groupby("商品名")["売上金額"].sum()
+
+# 最も売れた商品
+best_product = sales_by_product.idxmax()
+best_sales = sales_by_product.max()
+
+# 商品別売上の可視化
+plt.figure(figsize=(10, 6))
+sales_by_product.sort_values().plot(kind="barh", color="lightcoral", edgecolor="black")
+plt.axvline(best_sales, color="red", linestyle="dashed", linewidth=2, label=f"Best Seller: {best_product}")
+plt.title("商品別売上合計")
+plt.xlabel("売上金額")
+plt.ylabel("商品名")
+plt.legend()
+plt.tight_layout()
+plt.show()
