@@ -1,24 +1,30 @@
-# Python Data Analysis & Automation Portfolio
+# 📊 Portfolio Python Analysis
 
-このリポジトリには、Python を使ったデータ分析や業務自動化のサンプルをまとめています。
-
-## 🔹 1. 売上データの分析 (`sales_analysis`)
-- pandas を使って CSV のデータを集計・分析
-- Matplotlib で売上の可視化
-- `analysis.py` を実行すると、売上のレポートを作成
-
-## 🔹 2. 自動化スクリプト (`automation_scripts`)
-- `csv_cleaner.py`: データのクリーニング・不要データの削除
-- `excel_report_generator.py`: Excel レポートを自動生成
-
-## 🔹 3. データ可視化 (`visualization`)
-- `plot_sales.py`: 売上データを棒グラフで可視化
-- 出力サンプル → `bar_chart.png`
-
-## 🔹 使用技術
-- Python (pandas, matplotlib, seaborn)
-- Jupyter Notebook
-- Excel 自動化 (openpyxl)
+このプロジェクトは、売上データの分析、業務自動化スクリプト、データ可視化を行う Python プロジェクトです。  
+データ処理を効率化し、視覚的なインサイトを提供することを目的としています。
 
 ---
-🚀 **このリポジトリはクラウドソーシング向けのポートフォリオです！**
+
+## 📂 **ディレクトリ構成**
+📂 portfolio-python-analysis
+├── 📂 sales_analysis （売上データの分析）
+│ ├── sales_data.csv 
+│ ├── analysis.py
+│ ├── report.ipynb （Jupyter Notebook 版）
+│ └── README.md
+├── 📂 automation_scripts （業務自動化スクリプト）
+│ ├── csv_cleaner.py
+│ ├── excel_report_generator.py
+│ ├── README.md
+├── 📂 visualization （データ可視化）
+│ ├── plot_sales.py
+│ ├── bar_chart.png
+│ └── README.md
+├── README.md
+
+## 🔧 **セットアップ**
+### **1. 環境構築**
+Python 3.x がインストールされていることを確認してください。 
+必要なライブラリをインストールします：
+```sh
+pip install pandas matplotlib jupyter
