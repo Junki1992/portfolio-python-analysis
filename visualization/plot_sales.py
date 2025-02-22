@@ -22,6 +22,8 @@ plt.xlabel("日付")
 plt.ylabel("売上金額")
 plt.xticks(rotation=45)
 plt.tight_layout()
+# 日別売上のグラフを保存
+plt.savefig(os.path.join(script_dir, "bar_chart_daily.png"))
 plt.show()
 
 # 商品ごとの売上金額を集計
@@ -40,4 +42,6 @@ plt.xlabel("売上金額")
 plt.ylabel("商品名")
 plt.legend()
 plt.tight_layout()
+# 商品別売上のグラフを保存
+plt.savefig(os.path.join(script_dir, "bar_chart_products.png"))
 plt.show()
