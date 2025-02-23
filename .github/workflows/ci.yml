@@ -1,0 +1,25 @@
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v3
+
+      - name: Python をセットアップ
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      
+      - name: 必要なライブラリをインストール
+        run: pip install pandas matplotlib
+      
+      - name: コードの静的解析(フォーマットをチェック)
+        run: |
+          pip install black flake8
+          black --check .
+          flake8 .
