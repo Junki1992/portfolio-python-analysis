@@ -15,10 +15,15 @@ def load_data(file_name="sales_data.csv"):
         print(f"エラー: {file_name}が見つかりません。")
         return None
 
-def calculate_sales(df):
+def calculate_sales(df: pd.DataFrame) -> pd.DataFrame:
     """売上金額を計算し、新しい列を追加"""
     df["売上金額"] = df["数量"] * df["単価"]
     return df
+
+def filter_valid_sales(df: pd.DataFrame) -> pd.DataFrame:
+    """売上金額を計算"""
+    return df[(df["数量"] > 0) & (df["単価"] > 0)]
+
 
 def sales_by_date(df):
     """日別売上の合計を計算"""
