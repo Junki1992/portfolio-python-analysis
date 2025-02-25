@@ -11,21 +11,30 @@ def clean_csv(file_path, output_path=None, drop_columns=None):
         drop_columns (list, optional): 削除する列名のリスト。デフォルトはNone（すべての列を保持）
     """
     # CSVファイルを読み込む
-    df = pd.read_csv(file_path)
+    try:
+        df = pd.read_csv(file_path)
+    except FileNotFoundError:
+        print(f"エラー: {file_path}が見つかりません。")
+        return
+    except pd.errors.EmptyDataError:
+        print(f"エラー: {file_path}が空です。")
+        return
+    except Exception as e:
+        print(f"エラー: {file_path}の読み込みに失敗しました。\n{e}")
+        return
 
     # 指定した列を削除
     if drop_columns:
         df = df.drop(columns=drop_columns, errors="ignore")
 
-    # 欠損値を含む行を削除
-    df = df.dropna()
+    # 欠損値の処理(全ての値がNaNの行を削除)
+    df = df.dropna(how="all")
 
-    # 数値カラムを適切な型に変換
-    for col in df.select_dtypes(include=["object"]):
-        try:
-            df[col] = pd.to_numeric(df[col])
-        except ValueError:
-            pass # 変換できない列はそのまま
+    # 数値変換の最適化
+    df = df.apply(pd.to_numeric, errors="coerce")
+
+    # 欠損値をゼロに置き換え（必要なら変更）
+    df = df.fillna(0)
 
     # クリーン済みデータの保存
     output_path = output_path if output_path else file_path
