@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 
+
 def clean_csv(file_path, output_path=None, drop_columns=None):
     """
     指定されたCSVファイルをクリーンアップし、不要な列を削除します。
@@ -40,6 +41,7 @@ def clean_csv(file_path, output_path=None, drop_columns=None):
     output_path = output_path if output_path else file_path
     df.to_csv(output_path, index=False)
     print(f"CSVをクリーンアップしました: {output_path}")
+
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))

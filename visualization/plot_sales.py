@@ -2,9 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import sys
+
 # utils.pyをインポート
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils import load_data # 共通モジュールをインポート
+from utils import load_data  # 共通モジュールをインポート
+
 
 def plot_daily_sales(df, output_path):
     df["売上日"] = pd.to_datetime(df["売上日"])
@@ -22,6 +24,7 @@ def plot_daily_sales(df, output_path):
     plt.savefig(output_path)
     print(f"グラフを保存しました: {output_path}")
     plt.show()
+
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))

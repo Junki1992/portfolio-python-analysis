@@ -1,9 +1,11 @@
 import pandas as pd
 import os
 import sys
+
 # utils.pyをインポート
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils import load_data # 共通モジュールをインポート
+from utils import load_data  # 共通モジュールをインポート
+
 
 def generate_report(df, output_path):
     df = load_data(input_csv)
@@ -12,6 +14,7 @@ def generate_report(df, output_path):
 
     df.to_excel(output_excel, index=False)
     print(f"レポートを作成しました: {output_path}")
+
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
