@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+# import os  # 将来使用する可能性があるためコメントアウト
 
 
 def load_data(file_path):
@@ -11,6 +12,9 @@ def load_data(file_path):
     Returns:
         pd.DataFrame: 読み込んだデータフレーム
     """
+    if not os.path.exists(file_path):
+        print(f"ファイルが見つかりません: {file_path}")
+        return None
     try:
         df = pd.read_csv(file_path, encoding="utf-8-sig")
         return df
