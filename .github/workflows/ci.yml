@@ -24,7 +24,8 @@ jobs:
           black .
           flake8 .
     
-      - name: テストの実行
+      - name: テストを実行
         run: |
-            pip install pytest
-            pytest tests/
+          pip install pytest
+          pip install -e .
+          pytest tests/
