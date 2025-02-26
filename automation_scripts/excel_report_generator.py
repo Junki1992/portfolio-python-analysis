@@ -1,18 +1,17 @@
-import pandas as pd
 import os
 import sys
 
-# utils.pyをインポート
+# パスを追加してからインポート
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import load_data  # 共通モジュールをインポート
 
 
-def generate_report(df, output_path):
-    df = load_data(input_csv)
+def generate_report(input_path, output_path):
+    df = load_data(input_path)
     if df is None:
         return None
 
-    df.to_excel(output_excel, index=False)
+    df.to_excel(output_path, index=False)
     print(f"レポートを作成しました: {output_path}")
 
 
